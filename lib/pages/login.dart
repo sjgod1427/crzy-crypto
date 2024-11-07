@@ -1,3 +1,4 @@
+import 'package:crzy_crypto/authentication/phone_authentication.dart';
 import 'package:crzy_crypto/authentication/services.dart';
 import 'package:crzy_crypto/component/button.dart';
 import 'package:crzy_crypto/pages/home_page.dart';
@@ -183,6 +184,31 @@ class _LoginScreen extends State<LoginScreen> {
                     ),
                     if (isLoading) Center(child: CircularProgressIndicator()),
                     SizedBox(height: height / 15),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          "Use Phone Number Instead?",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Get.to(const PhoneAuthentication());
+                          },
+                          child: const Text(
+                            " Sign Up",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                              color: Colors.blue,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

@@ -1,9 +1,13 @@
+import 'package:crzy_crypto/authentication/services.dart';
 import 'package:crzy_crypto/controller/assets_controller.dart';
 import 'package:crzy_crypto/main.dart';
 import 'package:crzy_crypto/models/tracked_asset.dart';
 import 'package:crzy_crypto/pages/details_page.dart';
+import 'package:crzy_crypto/pages/login.dart';
 import 'package:crzy_crypto/utils.dart';
 import 'package:crzy_crypto/widgets/add_asset_dialogue.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -28,7 +32,13 @@ class HomePage extends StatelessWidget {
             onPressed: () {
               Get.dialog(AddAssetDialogue());
             },
-            icon: const Icon(Icons.add))
+            icon: const Icon(Icons.add)),
+        IconButton(
+            onPressed: () async {
+              await FirebaseAuth.instance.signOut();
+              Get.offAll(LoginScreen());
+            },
+            icon: const Icon(Icons.logout)),
       ],
     );
   }
